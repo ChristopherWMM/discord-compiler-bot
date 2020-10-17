@@ -83,7 +83,7 @@ export default class CompilationParser {
                 regex.lastIndex = this.message.message.content.search('|');
                 let match = regex.exec(this.message.message.content);
                 if (match && (this.getStdinBlockFromText() || argsData.fileInput)) {
-                    argsData.stdin = match[0];
+                    argsData.stdin = match[0].substring(3);
                 } else {
                     do {
                         args.shift(); // kill previous
