@@ -82,8 +82,15 @@ export default class CompilationParser {
                 const regex = /```([\s\S]*?)```/g;
                 regex.lastIndex = this.message.content.search('|');
                 let match = regex.exec(this.message.content);
-                if (match)
+                if (match) {
                     argsData.fileInput = match[0];
+                } else {
+                    do {
+                        args.shift(); // kill previous
+                        current = args[0];
+                        argsData.stdin += current + ' ';
+                    } while (args.length > 1 && !args[1].includes('```'));  
+                }
 
                 args = []; // stop parsing
             }
