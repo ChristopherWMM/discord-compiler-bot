@@ -80,8 +80,8 @@ export default class CompilationParser {
             // pipe operator should be last, everything after it should be stdin
             else if (current == '|') {
                 const regex = /```([\s\S]*?)```/g;
-                regex.lastIndex = message.search('|');
-                let match = regex.exec(message);
+                regex.lastIndex = this.message.search('|');
+                let match = regex.exec(this.message);
                 if (match)
                     argsData.fileInput = match[0];
 
