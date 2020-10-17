@@ -82,8 +82,8 @@ export default class CompilationParser {
                 const regex = /```([\s\S]*?)```/g;
                 regex.lastIndex = this.message.message.content.search('|');
                 let match = regex.exec(this.message.message.content);
-                if (match) {
-                    argsData.fileInput = match[0];
+                if (match && !getStdinBlockFromText()) {
+                    argsData.stdin = match[0];
                 } else {
                     do {
                         args.shift(); // kill previous
