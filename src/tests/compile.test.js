@@ -62,7 +62,7 @@ describe('Compile Command', function() {
     it('Parse all standard - code block stdin', () => {
         let stdin = 'testing 1 2 3';
         let options = '-O3 -std=c++11 -fake-flag1 -fake-flag2';
-        fakeMessage.content = `;compile c++ ${options} | \`\`\`${stdin}\`\`\``
+        fakeMessage.content = `;compile c++ ${options} | \`\`\`\n${stdin}\`\`\``
         let argsData = parser.parseArguments();
 
         assert.strictEqual(argsData.options, options);
